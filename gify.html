@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Document</title>
+    </head>
+    <body>
+        <img src="#">
+        <button>Click to change</button>
+        <script>
+            const img = document.querySelector('img');
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', () => {
+                fetch('https://api.giphy.com/v1/gifs/translate?api_key=FnXxRLsWjMGClltwZYoUTs83RFrmSELW&s=cats', {mode: 'cors'})
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    img.src = (response.data.images.original.url);
+                });
+            })
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=FnXxRLsWjMGClltwZYoUTs83RFrmSELW&s=cats', {mode: 'cors'})
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    img.src = (response.data.images.original.url);
+                });
+        </script>
+    </body>
+</html>
