@@ -10,7 +10,7 @@
         <script>
             const img = document.querySelector('img');
             const btn = document.querySelector('button');
-            btn.addEventListener('click', () => {
+            async function getCats() {
                 fetch('https://api.giphy.com/v1/gifs/translate?api_key=FnXxRLsWjMGClltwZYoUTs83RFrmSELW&s=cats', {mode: 'cors'})
                 .then(function(response) {
                     return response.json();
@@ -18,14 +18,11 @@
                 .then(function(response) {
                     img.src = (response.data.images.original.url);
                 });
+            }
+            btn.addEventListener('click', () => {
+                getCats();
             })
-            fetch('https://api.giphy.com/v1/gifs/translate?api_key=FnXxRLsWjMGClltwZYoUTs83RFrmSELW&s=cats', {mode: 'cors'})
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(response) {
-                    img.src = (response.data.images.original.url);
-                });
+            getCats();
         </script>
     </body>
 </html>
